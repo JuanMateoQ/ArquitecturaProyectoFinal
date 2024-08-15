@@ -14,14 +14,28 @@ public class CPU {
 
     public void guardarEnMemoriaSecundaria(int aux) {
         ssd.guardarDato(aux);
+
     }
 
     public void mostrarDatosDeMemoriaSecundaria() {
         ssd.imprimirDatosGuardados();
     }
 
-    public void realizarOperación(int númeroDeOperaciónARealizar) {
+    public void guardarOperación(int númeroDeOperaciónARealizar) {
         int PCDEOperación = ram.seleccionarPC(númeroDeOperaciónARealizar);
-        uc.empezarOperaciónConPC(PCDEOperación);
+        uc.cargarPCDeOperación(PCDEOperación);
+    }
+
+    public void cargarEnMemoriaPrincipal() {
+        for (int i =0; i < ssd.getNúmeroDeValoresCargados(); i++){
+            ram.agregarValor(ssd.getValor(i));
+        }
+    }
+    public int getCantidadDeValoresEnMemoriaSecundaria() {
+        return ssd.getNúmeroDeValoresCargados();
+    }
+
+    public void mostrarDatosDeMemoriaPrinciapal() {
+        ram.mostrarValoresCargados();
     }
 }

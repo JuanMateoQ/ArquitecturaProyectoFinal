@@ -29,4 +29,16 @@ public class MemoriaRam {
     public int seleccionarPC(int númeroDeOperaciónARealizar) {
         return operacionesPCDisponibles.get(númeroDeOperaciónARealizar);
     }
+
+    public void agregarValor(int valorAAgregar) {
+        arregloDeMemoria[cantidadDeDatosGurdados] = valorAAgregar;
+        cantidadDeDatosGurdados++;
+    }
+
+    public void mostrarValoresCargados() {
+        System.out.println("Los datos cargados en Memoria Principal son...");
+        for (int i =0; i < cantidadDeDatosGurdados; i++){
+            System.out.println(i+1 + ": " + arregloDeMemoria[i]);
+        }
+    }
 }

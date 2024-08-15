@@ -8,8 +8,19 @@ public class Main {
 
     public static void main(String[] args) {
         int númeroOperaciónARealizar = 0;
-        ingresarValoresAMemoriaRAM();
-        cpu.realizarOperación(escogerOpcionesARealizarEnCpu(númeroOperaciónARealizar));
+        ingresarValoresAMemoriaSecundaria();
+        cpu.guardarOperación(escogerOpcionesARealizarEnCpu(númeroOperaciónARealizar));
+        escogerPosiciónDeValoresAOperar();
+    }
+
+    private static void escogerPosiciónDeValoresAOperar() {
+        cpu.mostrarDatosDeMemoriaPrinciapal();
+        int valor1, valor2;
+        System.out.println("Ingrese la posición del Primer Valor a Operar: ");
+        valor1 = scanner.nextInt();
+        System.out.println("Ingrese la posición del Segundo Valor a Operar: ");
+        valor2 = scanner.nextInt();
+        //cpu.cargarValoresACache(valor1);
     }
 
     private static int escogerOpcionesARealizarEnCpu(int númeroOperaciónARealizar) {
@@ -26,8 +37,8 @@ public class Main {
         return númeroOperaciónARealizar;
     }
 
-    private static void ingresarValoresAMemoriaRAM() {
-        System.out.println("| INGRESE LOS VALORES A ALMACENAR EN MEMORIA RAM... |");
+    private static void ingresarValoresAMemoriaSecundaria() {
+        System.out.println("| INGRESE LOS VALORES A ALMACENAR EN MEMORIA SECUNDARIA... |");
         int opc;
         do{
             System.out.println("Valor a ingresar:");
@@ -37,8 +48,8 @@ public class Main {
                 System.out.println("Desea seguir ingresando más valores...\n 1:SI  0:NO");
                 opc = scanner.nextInt();
                 System.out.println("\n");
-            }while(opc != 0 & opc != 1);
+            }while((opc != 0 & opc != 1)& (cpu.getCantidadDeValoresEnMemoriaSecundaria() < 14));
         }while(opc == 1);
-        cpu.mostrarDatosDeMemoriaSecundaria();
+        cpu.cargarEnMemoriaPrincipal();
     }
 }

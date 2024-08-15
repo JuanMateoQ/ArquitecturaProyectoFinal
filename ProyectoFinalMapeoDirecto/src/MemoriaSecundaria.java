@@ -23,4 +23,12 @@ public class MemoriaSecundaria {
             System.out.println(i+1 + ": " + datosGuardadosNoBorrables.get(i));
         }
     }
+
+    public int getNúmeroDeValoresCargados() {
+        return datosGuardadosNoBorrables.size();
+    }
+
+    public int getValor(int i) {
+        return datosGuardadosNoBorrables.get(i);
+    }
 }
