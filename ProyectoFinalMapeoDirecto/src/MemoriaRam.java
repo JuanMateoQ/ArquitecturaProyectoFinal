@@ -105,4 +105,13 @@ public class MemoriaRam {
     public LíneasDeMemoria getDatos(int i) {
         return arregloDeMemoria[i];
     }
+
+    public void modificarEnMemoriaPrincipal(int tag, int index, String valor) {
+        for(int i = 0; i < cantidadDeDatosGurdados; i++){
+            if (tag == arregloDeMemoria[i].getTag() & index == arregloDeMemoria[i].getIndex()){
+                arregloDeMemoria[i].setValor(valor);
+                return;
+            }
+        }
+    }
 }

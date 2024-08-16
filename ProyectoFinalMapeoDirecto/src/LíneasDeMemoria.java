@@ -2,7 +2,7 @@ public class LíneasDeMemoria {
     int tag;
     int index;
     int offset;
-    int datoAlmacenado;
+    String datoAlmacenado;
     public LíneasDeMemoria(){
         this.tag = -1;
         this.index = -1;
@@ -17,7 +17,7 @@ public class LíneasDeMemoria {
         return this.index;
     }
 
-    public int getDatoAlamcenado() {
+    public String getDatoAlamcenado() {
         return datoAlmacenado;
     }
 
@@ -29,7 +29,7 @@ public class LíneasDeMemoria {
         this.tag = i;
     }
 
-    public void setValor(int valorAAgregar) {
+    public void setValor(String valorAAgregar) {
         this.datoAlmacenado = valorAAgregar;
     }
 }

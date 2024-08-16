@@ -79,4 +79,14 @@ public class MemoriaCache {
             }
         }
     }
+
+    public void modificarDato(int tag, int index, String valor) {
+        for(int i = 0; i < this.cantidadDeLíneas; i++){
+            if(tag == líneasDeMemoriaCache[i].getTag() && index == líneasDeMemoriaCache[i].getIndex()){
+                líneasDeMemoriaCache[i].setValor(valor);
+                return;
+            }
+        }
+        ram.modificarEnMemoriaPrincipal(tag, index, valor);
+    }
 }

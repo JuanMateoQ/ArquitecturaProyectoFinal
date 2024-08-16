@@ -23,4 +23,8 @@ public class Registros {
             System.out.println(i + ": " + registros[i]);
         }
     }
+
+    public String getDato(int valor) {
+        return registros[valor];
+    }
 }

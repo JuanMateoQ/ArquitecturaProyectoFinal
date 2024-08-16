@@ -22,7 +22,7 @@ public class CPU {
     }
 
     public void guardarOperación(int númeroDeOperaciónARealizar) {
-        int PCDEOperación = ram.seleccionarPC(númeroDeOperaciónARealizar);
+        int PCDEOperación = ram.seleccionarPC(númeroDeOperaciónARealizar-1);
         uc.cargarPCDeOperación(PCDEOperación);
     }
 
