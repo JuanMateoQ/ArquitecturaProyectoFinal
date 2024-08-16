@@ -7,10 +7,30 @@ public class Main {
     static CPU cpu = new CPU();
 
     public static void main(String[] args) {
-        int númeroOperaciónARealizar = 0;
+        int númeroOperaciónARealizar = -1;
         ingresarValoresAMemoriaSecundaria();
-        cpu.guardarOperación(escogerOpcionesARealizarEnCpu(númeroOperaciónARealizar));
-        escogerPosiciónDeValoresAOperar();
+        int aux;
+
+        do{
+            aux = escogerOpcionesARealizarEnCpu(númeroOperaciónARealizar);
+            switch (aux){
+                case 1, 2, 3:{
+                    cpu.guardarOperación(aux);
+                    escogerPosiciónDeValoresAOperar();
+                    break;
+                }
+                case 4:{
+                    cpu.mostrarDatosDeMemoriaPrinciapal();
+                    break;
+                }
+                case 5:{
+                    cpu.mostrarDatosDeMemoriacache();
+                    break;
+                }
+
+            }
+        }while(aux != 0);
+
     }
 
     private static void escogerPosiciónDeValoresAOperar() {
@@ -28,12 +48,14 @@ public class Main {
         System.out.println("1. Sumar.");
         System.out.println("2. Multiplicar.");
         System.out.println("3. Operación Lógica AND.");
+        System.out.println("4. Ver Memoria RAM");
+        System.out.println("5. Ver Memoria Cache");
         System.out.println("0. Salir...");
 
             System.out.println("Seleccionar opción: ");
             do{
                 númeroOperaciónARealizar = scanner.nextInt();
-            }while(númeroOperaciónARealizar<0 & númeroOperaciónARealizar>3);
+            }while(númeroOperaciónARealizar<0 & númeroOperaciónARealizar>5);
         return númeroOperaciónARealizar;
     }
 

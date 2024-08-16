@@ -22,8 +22,8 @@ public class CPU {
     }
 
     public void guardarOperación(int númeroDeOperaciónARealizar) {
-        int PCDEOperación = ram.seleccionarPC(númeroDeOperaciónARealizar-1);
-        uc.cargarPCDeOperación(PCDEOperación);
+            int PCDEOperación = ram.seleccionarPC(númeroDeOperaciónARealizar-1);
+            uc.cargarPCDeOperación(PCDEOperación);
     }
 
     public void cargarEnMemoriaPrincipal() {
@@ -41,5 +41,9 @@ public class CPU {
 
     public void empezarOperación(int valor1, int valor2) {
         uc.empezarOperación(valor1, valor2);
+    }
+
+    public void mostrarDatosDeMemoriacache() {
+        cache.mostrarValoresCargados();
     }
 }
