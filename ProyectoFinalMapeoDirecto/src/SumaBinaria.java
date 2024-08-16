@@ -1,12 +1,12 @@
 public class SumaBinaria {
-    public static Binario sumarBinarios(Binario a, Binario b) {
-        String binarioA = a.getNumeroBinario();
-        String binarioB = b.getNumeroBinario();
+    public static String sumarBinarios(String a, String b) {
+        String binarioA = a;
+        String binarioB = b;
 
         // Asegurar que ambos números tienen la misma longitud
         int maxLength = Math.max(binarioA.length(), binarioB.length());
-        binarioA = String.format("%0" + maxLength + "d", Integer.parseInt(binarioA));
-        binarioB = String.format("%0" + maxLength + "d", Integer.parseInt(binarioB));
+        binarioA = String.format("%" + maxLength + "s", binarioA).replace(' ', '0');
+        binarioB = String.format("%" + maxLength + "s", binarioB).replace(' ', '0');
 
         StringBuilder resultado = new StringBuilder();
         int acarreo = 0;
@@ -21,17 +21,13 @@ public class SumaBinaria {
         }
 
         // Asegurar que el resultado tenga 6 bits
-        while (resultado.length() < 6) {
-            resultado.insert(0, '0');
+        String resultadoFinal = resultado.toString();
+        if (resultadoFinal.length() < 6) {
+            resultadoFinal = String.format("%6s", resultadoFinal).replace(' ', '0');
+        } else if (resultadoFinal.length() > 6) {
+            resultadoFinal = resultadoFinal.substring(resultadoFinal.length() - 6);
         }
 
-        // Verificar si el resultado excede los 6 bits
-        if (resultado.length() > 6) {
-            System.out.println("Error: El resultado de la suma binaria excede 6 bits.");
-            return null;
-        } else {
-            System.out.println("Resultado de la suma en 6 bits: " + resultado);
-            return new Binario(Integer.parseInt(resultado.toString(), 2));
-        }
+        return resultadoFinal;
     }
 }

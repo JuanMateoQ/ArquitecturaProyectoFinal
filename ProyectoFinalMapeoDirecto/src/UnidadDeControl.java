@@ -46,6 +46,7 @@ public class UnidadDeControl {
             case 3: {
                 //aqui va Suma
                 //registros.cargarEnRegistro(2,(registros.getDato(0) + registros.getDato(1)));
+                registros.cargarEnRegistro(2, SumaBinaria.sumarBinarios(registros.getDato(0),registros.getDato(1)));
                 break;
             }
             case 4: {
@@ -53,19 +54,20 @@ public class UnidadDeControl {
                 index = (valor1-1) % (cache.getNúmeroDeLíneas());
                 //Siendo cero el Primer Registro
                 String valor = registros.getDato(2);
-
-                registros.cargarEnRegistro(0, valor);
+                //registros.cargarEnRegistro(0, valor);
                 cache.modificarDato(tag, index, valor);
                 break;
             }
             case 5: {
                 //Aqui va multiplicar
                 //registros.cargarEnRegistro(2,(registros.getDato(0) * registros.getDato(1)));
+                registros.cargarEnRegistro(2,MultiplicacionBinaria.multiplicarBinario(registros.getDato(0),registros.getDato(1)));
                 break;
             }
             case 6:{
                 //aqui va AND
                 //registros.cargarEnRegistro(2,(registros.getDato(0) * registros.getDato(1)));
+                registros.cargarEnRegistro(2,AND.and(registros.getDato(0),registros.getDato(1)));
             }
             default:{
                 System.out.println("A ocurrido un error al realizar las operciones ");

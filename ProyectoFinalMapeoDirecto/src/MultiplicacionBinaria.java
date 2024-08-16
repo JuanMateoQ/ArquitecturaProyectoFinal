@@ -1,7 +1,7 @@
 public class MultiplicacionBinaria {
-    public static Binario multiplicarBinario(Binario a, Binario b) {
-        String binarioA = a.getNumeroBinario();
-        String binarioB = b.getNumeroBinario();
+    public static String multiplicarBinario(String a, String b) {
+        String binarioA = a;
+        String binarioB = b;
 
         int maxLength = binarioA.length() + binarioB.length();
         int[] producto = new int[maxLength];
@@ -39,7 +39,12 @@ public class MultiplicacionBinaria {
             resultado.insert(0, '0');
         }
 
-        System.out.println("Resultado de la multiplicación en 6 bits: " + resultado);
-        return null;
+        // Verificar si el resultado excede los 6 bits
+        if (resultado.length() > 6) {
+            System.out.println("Error: El resultado de la multiplicación binaria excede 6 bits.");
+            return null;
+        } else {
+            return resultado.toString();
+        }
     }
 }
