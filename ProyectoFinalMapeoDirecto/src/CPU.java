@@ -7,7 +7,7 @@ public class CPU {
     MemoriaSecundaria ssd = MemoriaSecundaria.getInstance();
 
     public CPU(){
-        registro = new Registros();
+        registro = Registros.getInstance();
         alu = new UnidadLogicaAritmetica();
         uc = new UnidadDeControl();
     }
@@ -37,5 +37,9 @@ public class CPU {
 
     public void mostrarDatosDeMemoriaPrinciapal() {
         ram.mostrarValoresCargados();
+    }
+
+    public void empezarOperación(int valor1, int valor2) {
+        uc.empezarOperación(valor1, valor2);
     }
 }

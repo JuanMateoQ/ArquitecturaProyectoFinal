@@ -20,7 +20,7 @@ public class Main {
         valor1 = scanner.nextInt();
         System.out.println("Ingrese la posición del Segundo Valor a Operar: ");
         valor2 = scanner.nextInt();
-        //cpu.cargarValoresACache(valor1);
+        cpu.empezarOperación(valor1, valor2);
     }
 
     private static int escogerOpcionesARealizarEnCpu(int númeroOperaciónARealizar) {
@@ -43,6 +43,7 @@ public class Main {
         do{
             System.out.println("Valor a ingresar:");
             int aux = scanner.nextInt();
+            //que aqui se guarde un binario en memoria secundaria
             cpu.guardarEnMemoriaSecundaria(aux);
             do{
                 System.out.println("Desea seguir ingresando más valores...\n 1:SI  0:NO");
