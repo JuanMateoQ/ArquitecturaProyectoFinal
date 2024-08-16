@@ -82,14 +82,29 @@ public class MemoriaRam {
 
     public void mostrarValoresCargados() {
         System.out.println("Los datos cargados en Memoria Principal son...");
-        for (int i =0; i < cantidadDeDatosGurdados; i++){
-            if (arregloDeMemoria[i] != null) {
-                System.out.println(i + "tag: " + this.arregloDeMemoria[i].getTag());
-                System.out.println(i + "index: " + this.arregloDeMemoria[i].getIndex());
-                System.out.println(i + ": " + arregloDeMemoria[i].getDatoAlamcenado());
-            } else {
-                System.out.println("Error: Elemento en arregloDeMemoria es null en índice " + i);
+        
+        int elementosPorFila = 6; // Define cuántos elementos imprimir por fila
+        
+        for (int fila = 0; fila < cantidadDeDatosGurdados; fila += elementosPorFila) {
+            // Imprimir los índices
+            System.out.print("  ");
+            for (int i = fila; i < Math.min(fila + elementosPorFila, cantidadDeDatosGurdados); i++) {
+                System.out.printf("%-14d", i);
             }
+            System.out.println();
+        
+            // Imprimir tag e index en binario juntos en una sola línea
+            for (int i = fila; i < Math.min(fila + elementosPorFila, cantidadDeDatosGurdados); i++) {
+                if (arregloDeMemoria[i] != null) {
+                    String tagBinario = Binario.convertir(arregloDeMemoria[i].getTag());
+                    String indexBinario = Binario.convertir(arregloDeMemoria[i].getIndex());
+                    System.out.printf("|%-13s", tagBinario + " " + indexBinario);
+                } else {
+                    System.out.printf("|%-13s", "-");
+                }
+            }
+            System.out.println("|"); // Cierra la línea de la fila actual
+            System.out.println(); // Salto de línea entre bloques de 6 elementos
         }
     }
 

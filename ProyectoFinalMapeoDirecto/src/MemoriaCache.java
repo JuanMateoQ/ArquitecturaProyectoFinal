@@ -69,14 +69,30 @@ public class MemoriaCache {
 
     public void mostrarValoresCargados() {
         System.out.println("Los datos cargados en Memoria Cache son...");
-        for (int i = 0; i < cantidadDeLíneas; i++){
-            if (líneasDeMemoriaCache[i] != null) {
-                System.out.println(i + "tag: " + this.líneasDeMemoriaCache[i].getTag());
-                System.out.println(i + "index: " + this.líneasDeMemoriaCache[i].getIndex());
-                System.out.println(i + ": " + líneasDeMemoriaCache[i].getDatoAlamcenado());
-            } else {
-                System.out.println("Error: Elemento en líneasDeMemoriaCache es null en índice " + i);
+        
+        int elementosPorFila = 6; // Define cuántos elementos imprimir por fila
+    
+        for (int fila = 0; fila < cantidadDeLíneas; fila += elementosPorFila) {
+            // Imprimir los índices en una sola línea
+            System.out.printf("  "); // Espacio inicial para los índices
+            for (int i = fila; i < fila + elementosPorFila && i < cantidadDeLíneas; i++) {
+                System.out.printf("%-14d", i); // Espacio fijo de 14 caracteres para cada índice
             }
+            System.out.println(); // Salto de línea después de imprimir los índices
+    
+            // Imprimir los valores de tag y index en binario en la siguiente línea
+            for (int i = fila; i < fila + elementosPorFila && i < cantidadDeLíneas; i++) {
+                if (líneasDeMemoriaCache[i] != null) {
+                    String tagBinario = Binario.convertir(líneasDeMemoriaCache[i].getTag());
+                    String indexBinario = Binario.convertir(líneasDeMemoriaCache[i].getIndex());
+                    System.out.printf("|%-13s", tagBinario + " " + indexBinario); // Espacio fijo de 13 caracteres para cada par tag-index
+                } else {
+                    System.out.printf("|%-13s", "-"); // Imprimir un guion si el valor es null
+                }
+            }
+            System.out.println("|"); // Cerrar la línea con el último delimitador "|"
+    
+            System.out.println(); // Salto de línea entre bloques de 6 elementos
         }
     }
 
