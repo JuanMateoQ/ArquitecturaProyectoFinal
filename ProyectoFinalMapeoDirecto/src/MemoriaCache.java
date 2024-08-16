@@ -29,7 +29,7 @@ public class MemoriaCache {
         return cantidadDeLíneas;
     }
 
-    public int traerDato(int tag, int index) {
+    public String traerDato(int tag, int index) {
         if(comprobarSiExisteEnCache(tag, index)){
             return guardarDatoAux.getDatoAlamcenado();
         }
