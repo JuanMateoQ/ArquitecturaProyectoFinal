@@ -28,4 +28,8 @@ public class LíneasDeMemoria {
     public void setTag(int i) {
         this.tag = i;
     }
+
+    public void setValor(int valorAAgregar) {
+        this.datoAlmacenado = valorAAgregar;
+    }
 }

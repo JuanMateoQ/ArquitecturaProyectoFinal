@@ -3,18 +3,38 @@ import java.util.HashMap;
 
 public class MemoriaRam {
     private static MemoriaRam instance;
-    private int[] arregloDeMemoria;
+    private LíneasDeMemoria[] arregloDeMemoria;
     private HashMap<Integer, Integer> map;
     private ArrayList<Integer> operacionesPCDisponibles;
     private int cantidadDeDatosGurdados = 0;
     private int tamañoDeMemoria = 14;
+
     private MemoriaRam(){
         //Se puede hacer dinámico este valor,
-        arregloDeMemoria = new int[tamañoDeMemoria];
+        arregloDeMemoria = new LíneasDeMemoria[tamañoDeMemoria];
         operacionesPCDisponibles = new ArrayList<>();
         map = new HashMap<>();
         cargarOperacionesDisponibles();
         cargarPCasociadasAUnaOperación();
+        inicializarArregloDeMemoria(); // Inicializar los elementos del arreglo
+        cargarTagEIndex();
+    }
+
+    private void inicializarArregloDeMemoria() {
+        for (int i = 0; i < tamañoDeMemoria; i++) {
+            arregloDeMemoria[i] = new LíneasDeMemoria(); // Inicialización de cada elemento
+        }
+    }
+
+    private void cargarTagEIndex() {
+        for(int i =0; i < tamañoDeMemoria; i++){
+            if (arregloDeMemoria[i] != null) {
+                arregloDeMemoria[i].setIndex(i % (8));
+                arregloDeMemoria[i].setTag(i / (8));
+            } else {
+                System.out.println("Error: arregloDeMemoria[" + i + "] es null.");
+            }
+        }
     }
 
     private void cargarPCasociadasAUnaOperación() {
@@ -52,19 +72,37 @@ public class MemoriaRam {
     }
 
     public void agregarValor(int valorAAgregar) {
-        arregloDeMemoria[cantidadDeDatosGurdados] = valorAAgregar;
-        cantidadDeDatosGurdados++;
+        if (arregloDeMemoria[cantidadDeDatosGurdados] != null) {
+            arregloDeMemoria[cantidadDeDatosGurdados].setValor(valorAAgregar);
+            cantidadDeDatosGurdados++;
+        } else {
+            System.out.println("Error: Elemento en arregloDeMemoria es null en índice " + cantidadDeDatosGurdados);
+        }
     }
 
     public void mostrarValoresCargados() {
         System.out.println("Los datos cargados en Memoria Principal son...");
         for (int i =0; i < cantidadDeDatosGurdados; i++){
-            System.out.println(i+1 + ": " + arregloDeMemoria[i]);
+            if (arregloDeMemoria[i] != null) {
+                System.out.println(i + "tag: " + this.arregloDeMemoria[i].getTag());
+                System.out.println(i + "index: " + this.arregloDeMemoria[i].getIndex());
+                System.out.println(i + ": " + arregloDeMemoria[i].getDatoAlamcenado());
+            } else {
+                System.out.println("Error: Elemento en arregloDeMemoria es null en índice " + i);
+            }
         }
     }
 
     public int cargarOperación(int pc) {
         System.out.println(map.get(pc));
         return map.get(pc);
+    }
+
+    public int getCantidadDeDatos() {
+        return tamañoDeMemoria;
+    }
+
+    public LíneasDeMemoria getDatos(int i) {
+        return arregloDeMemoria[i];
     }
 }
