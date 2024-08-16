@@ -73,7 +73,7 @@ public class MemoriaRam {
 
     public void agregarValor(int valorAAgregar) {
         if (arregloDeMemoria[cantidadDeDatosGurdados] != null) {
-            arregloDeMemoria[cantidadDeDatosGurdados].setValor(valorAAgregar);
+            arregloDeMemoria[cantidadDeDatosGurdados].setValor(Binario.convertir(valorAAgregar));
             cantidadDeDatosGurdados++;
         } else {
             System.out.println("Error: Elemento en arregloDeMemoria es null en índice " + cantidadDeDatosGurdados);
