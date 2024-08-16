@@ -16,7 +16,7 @@ public class Registros {
     public void cargarEnRegistro(int númeroDeRegistro, String valorACaargar) {
         registros[númeroDeRegistro] = valorACaargar;
     }
-
+//hola
     public void imprimirRegistros() {
         System.out.println(" Los registros son: ");
         for (int i = 0; i < cantidadDeRegistros; i++){
