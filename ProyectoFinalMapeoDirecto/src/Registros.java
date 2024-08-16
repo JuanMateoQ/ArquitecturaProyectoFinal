@@ -1,9 +1,9 @@
 public class Registros {
-    public int[] registros;
+    public String[] registros;
     public int cantidadDeRegistros = 4;
     private static Registros instance;
     private Registros(){
-        this.registros = new int[cantidadDeRegistros];
+        this.registros = new String[cantidadDeRegistros];
     }
 
     public static Registros getInstance() {
@@ -13,7 +13,7 @@ public class Registros {
         return instance;
     }
 
-    public void cargarEnRegistro(int númeroDeRegistro, int valorACaargar) {
+    public void cargarEnRegistro(int númeroDeRegistro, String valorACaargar) {
         registros[númeroDeRegistro] = valorACaargar;
     }
 
